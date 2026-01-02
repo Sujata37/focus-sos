@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Focus Coach</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; margin: 14px; width: 320px; }
+    textarea, input, select { width: 100%; box-sizing: border-box; margin: 6px 0; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .btns { display: flex; gap: 8px; margin-top: 8px; }
+    button { padding: 8px 10px; border: none; border-radius: 8px; cursor: pointer; }
+    #start { background: #111827; color: #fff; }
+    #stop { background: #e5e7eb; color: #111827; }
+    .hint { font-size: 12px; color: #555; }
+    .pill { background: #eef2ff; display: inline-block; padding: 2px 8px; border-radius: 999px; margin: 2px 4px 0 0; }
+  </style>
+</head>
+<body>
+  <h3>Focus Coach</h3>
+  <label>Study plan</label>
+  <textarea id="plan" rows="3" placeholder="Example: Read 3 papers, take notes, outline section 2"></textarea>
+
+  <div class="row">
+    <div>
+      <label>Duration (min)</label>
+      <input type="number" id="duration" min="5" step="5" value="60" />
+    </div>
+    <div>
+      <label>Check every (min)</label>
+      <input type="number" id="interval" min="1" step="1" value="5" />
+    </div>
+  </div>
+
+  <label>Allowed domains for this session</label>
+  <input id="domains" placeholder="e.g. scholar.google.com, moodle.uni.edu" />
+  <div class="hint">Tip: manage a reusable list in the <a id="openOptions" href="#">Options</a>.</div>
+  <div id="chips"></div>
+
+  <label><input type="checkbox" id="useGemini" /> Use Gemini for quotes</label>
+  <input id="geminiKey" type="password" placeholder="Gemini API key (optional, not recommended to store here)" />
+
+  <div class="btns">
+    <button id="start">Start session</button>
+    <button id="stop">Stop</button>
+  </div>
+
+  <div class="hint" id="status"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
